@@ -19,7 +19,7 @@ Scripts necessary for MAGMA geneset analysis
 
 Use the merge function in MAGMA to combine the per chromosome .raw results in one file 
 
-**00_create_top10expressedgenes_MAGMA.R*8
+**00_create_top10expressedgenes_MAGMA.R**
 
 **input:** HOM_MouseHumanSequence.gencode_v19.list: dictionary mice genes to human genes, Mouseatlas_specific_expression_L5.txt: normalized across cell genes expression from Zeisel et al. (normalised by Michel)
 **output:** geneset_top10expression.txt Create the gene sets: Each set is the 10% most expressed genes in the specific celltype. Data comes from mice so the genes names are changed to human names. 
