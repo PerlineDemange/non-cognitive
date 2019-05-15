@@ -1,6 +1,6 @@
 **TO ADAPT AND COMPLETE**  
 
-#Cholesky model in Genomic SEM 
+# Cholesky model in Genomic SEM 
 See https://github.com/MichelNivard/GenomicSEM/wiki 
 
 *PrepLDSCoutput.R*
