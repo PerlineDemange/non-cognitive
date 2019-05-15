@@ -1,0 +1,8 @@
+### Merge with MAGMA 
+#To do in the folder containing the gene analysis results, for both cog and noncog 
+module load magma
+
+/home/pdemange/CogNonCog/Annotations/MAGMA/magma --merge gene_analysis --out gene_analysis_allchr
+
+
+
