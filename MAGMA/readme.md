@@ -34,4 +34,11 @@ Use the merge function in MAGMA to combine the per chromosome .raw results in on
 
 **output:** in Gene_set_analysis/Cog or NonCog gene_set_analysis.gsa.genes.out: results per genes 
 gene_set_analysis.gsa.out: results per sets for competitive model (output we are interested in) gene_set_analysis.gsa.self.out: results for self-contained analysis gene_set_analysis.gsa.sets.genes.out: results per genes for significant sets.Realises the gene-set analysis (Competitive: Competitive gene-set analysis tests whether the genes in a gene-set are more strongly associated with the phenotype of interest than other genes. Also do self-contained analysis)
-05_Explore_gene_set_results.R
+
+**05_Explore_gene_set_results.R**
+Combine the Cog and NonCog results from MAGMA gene set analysis together and with the description of the annotations
+Save MAGMA results in one txt file 
+Create a scatterplot plotting Beta Cog against NonCog 
+Compare geneset enrichment between Cog and NonCog 
+Compare genes enrichment between Cog and NonCog 
+Create a plot with all genesets associations z-scores by Taxonomy 
