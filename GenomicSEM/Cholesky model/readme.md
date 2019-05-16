@@ -31,7 +31,7 @@ For general info on running GenomicSEM see: https://github.com/MichelNivard/Geno
 - Cognitive_GWAS_with23andMe.Rda, Cognitive_GWAS_with23andMe.txt, Cognitive_GWAS_short_with23andMe.txt
 - Non_Cognitive_GWAS_with23andMe.Rda, Non_Cognitive_GWAS_with23andMe.txt, Non_Cognitive_GWAS_short_with23andMe.txt
 
-*HowtoPruneforLD_new*, done in interactive mode on LISA
+*HowtoPruneforLD*: identify independent hits, done in interactive mode on LISA
 - outputs: Cog_23andMe_sig_independent_signals.txt, NonCog_23andMe_sig_independent_signals.txt		
 
 *Manhattanplot.R*
