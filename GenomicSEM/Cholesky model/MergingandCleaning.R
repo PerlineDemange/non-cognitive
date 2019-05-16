@@ -116,29 +116,5 @@ write.table(noncog2, file = "Non_Cognitive_GWAS_short_with23andMe.txt", sep = "\
 ### Find independent signficant hits ###
 # Use the file HowtoPruneforLD in unix 
 
-## Nicer manhattan plot can also be done with the ManhattanPlot.R file ##
-# Basics Manhattan plots
-#library(qqman)
-#jpeg('manhattan1-8Mcog.jpg', width = 1600, height = 700)
-#manhattan(cognitivetot, chr = "CHR", bp = "BP", snp = "SNP", p = "P", main = "Manhattan plot cognitive, chi sq = 1.813")
-#dev.off()
-#jpeg('manhattan1-8Mnoncog.jpg', width = 1600, height = 700)
-#manhattan(noncogtot, chr = "CHR", bp = "BP", snp = "SNP", p = "P", main = "Manhattan plot non-cognitive, chi sq = 1.473")
-#dev.off()
 
-# Manhattan plots with sig independent SNPS highlighted 
-#Cog_sig_ind <- read.table(file="Cog_sig_independent_signals.txt", col.names = c("CHR:POS","P") )
-#Non_Cog_sig_ind <- read.table(file="Non_Cog_sig_independent_signals.txt", col.names = c("CHR:POS","P") )
-#cognitivetot$CHR.POS <- paste(cognitivetot$CHR, cognitivetot$BP, sep=":")
-#noncogtot$CHR.POS <- paste(noncogtot$CHR, noncogtot$BP, sep=":")
-#Cog_sig_ind <- as.vector(Cog_sig_ind$CHR.POS)
-#Non_Cog_sig_ind <- as.vector(Non_Cog_sig_ind$CHR.POS)
-
-#jpeg('manhattan_cog_highlight.jpg', width = 1600, height = 700)
-#manhattan(cognitivetot, chr = "CHR", bp = "BP", snp = "CHR.POS", p = "P", highlight= Cog_sig_ind, main = "Manhattan plot cognitive, chi sq = 1.813")
-#dev.off()
-
-#jpeg('manhattan_noncog_highlight.jpg', width = 1600, height = 700)
-#manhattan(noncogtot, chr = "CHR", bp = "BP", snp = "CHR.POS", p = "P", highlight= Non_Cog_sig_ind, main = "Manhattan plot non-cognitive, chi sq = 1.473")
-#dev.off()
 
