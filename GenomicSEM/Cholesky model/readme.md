@@ -2,7 +2,7 @@
 
 # Cholesky model in Genomic SEM 
 
-This model takes GWASs summary statoistics for educational attainment and cognitive ability, and fits a modle whether the SNP effects on EA shared with cognitive ability (i.e. cog) are estiamted as well as the SNP effcts on educational attainment not attricdbutabel to cognitive ability (ik.e. non-cog). the scripts are develped to run on the [LISA system](https://userinfo.surfsara.nl/systems/lisa), which may mean you need to modify them to get them to run on your IT infrastructure. 
+This model takes GWAS summary statistics for educational attainment and cognitive ability, and fits a model whether the SNP effects on EA shared with cognitive ability (i.e. cog) are estimated as well as the SNP effcts on educational attainment not shared with  cognitive ability (ik.e. non-cog). The scripts are develped to run on the [LISA system](https://userinfo.surfsara.nl/systems/lisa), which may mean you need to modify them to get them to run on your IT infrastructure. 
 
 
 For general info on running GenomicSEM see: https://github.com/MichelNivard/GenomicSEM/wiki 
