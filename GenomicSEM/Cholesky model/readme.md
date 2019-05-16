@@ -1,4 +1,5 @@
 **TO ADAPT AND COMPLETE**  
+Add ManhanttanPlot.r when final
 
 # Cholesky model in Genomic SEM 
 
