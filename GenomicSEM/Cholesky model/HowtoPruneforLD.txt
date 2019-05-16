@@ -1,0 +1,29 @@
+## Code lines to run directly in terminal, to identify independent significantly associated SNPs 
+
+# get identifier #need to print another column with the chr:pos in order to be able to compare it with the 1000Genomes file
+awk '{print $2":"$3}' Non_Cognitive_GWAS_New.txt > identifier.txt
+
+# paste identifier to gwas sumstats
+paste identifier.txt Non_Cognitive_GWAS_New.txt > tmp.txt
+
+# change the headers of gwas sumstats
+sed -i 's/SNP/RS/g' tmp.txt
+sed -i 's/CHR:BP/SNP/g' tmp.txt
+
+# change tmp to official name
+mv tmp.txt Non_Cognitive_GWAS_adjust_New.txt
+
+# clump the GWAS data with the reference file for LD (here 1000Genomes, in the higher directory)
+module load plink
+/home/pdemange/CogNonCog/plink --bfile /home/pdemange/1000Genomes.201106.LDpred.ALL.1 --clump Non_Cognitive_GWAS_adjust_New.txt --clump-kb 250 --clump-r2 0.1 --out CLUMP_Non_Cognitive
+
+# get only the rsid and pvalue of the independent SNPS
+awk '{print $3, $5}' CLUMP_Non_Cognitive.clumped > Non_Cog_independent_signals_New.txt
+
+# create a file with only the significant independent SNPS
+awk '{if($2< 0.00000005) print $0}' Non_Cog_independent_signals_New.txt > Non_Cog_sig_independent_signals_New.txt
+
+# get infos about the file, the first number is the number of lines and therefore the number of significant independent signals
+wc Non_Cog_sig_independent_signals_New.txt
+
+## carefull there are two empty rows at the end of the create dataframe !! 
