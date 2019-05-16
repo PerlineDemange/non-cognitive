@@ -1,4 +1,6 @@
-Scripts necessary for MAGMA geneset analysis
+# Gene and Gene-sets analysis in MAGMA 
+
+More information on how to run MAGMA analyses on MAGMA's website: https://ctg.cncr.nl/software/magma
 
 **00_correct_gene_location_file.R**
 			
