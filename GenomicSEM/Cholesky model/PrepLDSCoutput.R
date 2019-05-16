@@ -10,7 +10,7 @@
 # install.packages("devtools")
 # library(devtools)
 # install_github("MichelNivard/GenomicSEM")
-#GenomicSEM was installed on this machine on the 26/03/2019 (this version of GenomicSEM might be different than the one used for the analysis of Lee excl23andME)
+# GenomicSEM was installed on this machine on the 26/03/2019 
 
 require(GenomicSEM)
 
