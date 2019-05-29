@@ -1,4 +1,5 @@
 # Heritability enrichment of genes specifically expressed in nervous system cell-types. 
+More details on https://github.com/bulik/ldsc/wiki/Partitioned-Heritability
 
 ## Creation of the annotations 
 These scripts were adapted from scripts by Hill Ip, and use the functions *make.LDSR.annot_v2_4_6.R*, available in (link to github). \
