@@ -8,7 +8,7 @@
 *script.2.input_2_annot.R:* \
 *script.3.make_union.sh:*\
 *script.3.make_union.R:* \
-*make.LDSR.annot_v2_4_6.R:* \ 
+*make.LDSR.annot_v2_4_6.R:* 
 
 
 ## Estimation of the partitioned heritability
