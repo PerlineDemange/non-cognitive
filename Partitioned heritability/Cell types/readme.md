@@ -2,7 +2,7 @@
 More details on https://github.com/bulik/ldsc/wiki/Partitioned-Heritability
 
 ## Creation of the annotations 
-These scripts were adapted from scripts by Hill Ip, and use the functions *make.LDSR.annot_v2_4_6.R*, available in (link to github). \
+These scripts were adapted from scripts by Hill Ip, and use the functions *make.LDSR.annot_v2_4_6.R*, available in https://github.com/hillfung/make_LDSR_annot. \
 *Normalize_cell_expression.R:* normalizing the expression within cell type, data from Zeisel et al. 2018 \
 *script.0.submit_jobs.sh:*  \
 *script.1.input_2_annot.sh:* \
