@@ -2,6 +2,6 @@
 
 Lee et al. 2018 summary statistics are available here: https://www.thessgac.org/data
 
-23andMe data are availabel upon request to 23andMe. 
+23andMe data are available upon request to 23andMe. 
 
 The meta-analysed was performed using METAL (http://csg.sph.umich.edu/abecasis/Metal/). See Methods section for more details. 
