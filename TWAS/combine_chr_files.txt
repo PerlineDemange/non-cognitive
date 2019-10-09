@@ -1,0 +1,29 @@
+#!/bin/bash
+
+### to merge all output files (per chromosome)
+for FILE in $(ls TWAS.Brain.Cog.*);do
+if [[ $(find . -maxdepth 1 -name "TWAS.Brain.Cog.ALL" -type f 2> /dev/null | wc -l) == 1 ]];then
+tail -n+2 ${FILE} >> TWAS.Brain.Cog.ALL
+else
+cp ${FILE} TWAS.Brain.Cog.ALL
+fi
+done
+
+## to merge all except 6.MHC
+
+for CHR in $(seq 1 22);do
+if [[ $(find . -maxdepth 1 -name "TWAS.Brain.Cog.ALL" -type f 2> /dev/null | wc -l) == 1 ]];then
+tail -n+2 TWAS.Brain.Cog.${CHR} >> TWAS.Brain.Cog.ALL
+else
+cp TWAS.Brain.Cog.${CHR} TWAS.Brain.Cog.ALL
+fi
+done
+
+
+for CHR in $(seq 1 22);do
+if [[ $(find . -maxdepth 1 -name "TWAS.Brain.NonCog.ALL" -type f 2> /dev/null | wc -l) == 1 ]];then
+tail -n+2 TWAS.Brain.NonCog.${CHR} >> TWAS.Brain.NonCog.ALL
+else
+cp TWAS.Brain.NonCog.${CHR} TWAS.Brain.NonCog.ALL
+fi
+done
