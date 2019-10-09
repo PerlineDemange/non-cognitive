@@ -4,4 +4,6 @@ Lee et al. 2018 summary statistics are available here: https://www.thessgac.org/
 
 23andMe data are available upon request to 23andMe. 
 
-The meta-analysed was performed using METAL (http://csg.sph.umich.edu/abecasis/Metal/). See Methods section for more details. 
+The meta-analyse was performed using METAL (http://csg.sph.umich.edu/abecasis/Metal/). See Methods section for more details. 
+
+Our script can be found in the above * metal* file. 
