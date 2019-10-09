@@ -6,4 +6,4 @@ Lee et al. 2018 summary statistics are available here: https://www.thessgac.org/
 
 The meta-analyse was performed using METAL (http://csg.sph.umich.edu/abecasis/Metal/). See Methods section for more details. 
 
-Our script can be found in the above * metal* file. 
+Our script can be found in the above *metal* file. 
