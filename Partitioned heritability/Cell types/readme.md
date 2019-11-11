@@ -18,3 +18,7 @@ These scripts were adapted from scripts by Hill Ip, and use the functions *make.
 *03_script_run_all-annotations.bash:* script to run on LISA, and this will loop over to run the previous jobs over a list of annotations. \
 *04_create_results_file.bash:* Use the outputs of the previous files and combine them in one file per trait: the output is one line per annotation. (I copy paste the lines directly in LISA)  \
 - Ouput: The output used is on the format .results (we do not use the output created without the union annotation ".NO_UNION.results"). 
+
+
+
+## Add 05_explore to create fig + final data
