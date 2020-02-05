@@ -1,9 +1,11 @@
 **TO ADAPT AND COMPLETE**  
 Add ManhanttanPlot.r when final
 
-# Cholesky model in Genomic SEM 
+# Cholesky model in Genomic SEM (GWAS-by-subtraction) 
 
-This model takes GWAS summary statistics for educational attainment and cognitive ability, and fits a model whether the SNP effects on EA shared with cognitive ability (i.e. cog) are estimated as well as the SNP effcts on educational attainment not shared with  cognitive ability (ik.e. non-cog). The scripts are develped to run on the [LISA system](https://userinfo.surfsara.nl/systems/lisa), which may mean you need to modify them to get them to run on your IT infrastructure. 
+This model takes GWAS summary statistics for educational attainment and cognitive performance, and fits a model where the SNP effects on EA shared with cognitive ability (i.e. cog) are estimated as well as the SNP effects on educational attainment not shared with cognitive ability (i.e. non-cog). The scripts are developed to run on the [LISA system](https://userinfo.surfsara.nl/systems/lisa), which may mean you need to modify them to get them to run on your IT infrastructure. 
+
+A tutorial to run the GWAS-by-subtration is also available [here](https://rpubs.com/MichelNivard/565885).
 
 
 For general info on running GenomicSEM see: https://github.com/MichelNivard/GenomicSEM/wiki 
@@ -20,7 +22,7 @@ For general info on running GenomicSEM see: https://github.com/MichelNivard/Geno
 - input: LDSCoutputCogNonCog.RData
 - output: Modeloutput_with23andMe.Rdata
 
-*CogNonCog2.R*: run our model with SNP effects with GSEM, done on cluster computer LISA with the following files (split the analysis to make it manageable): 
+*CogNonCog2.R*: run our model with SNP effects with GSEM, done on cluster computer LISA with the following files (we split the analysis to make it manageable): 
 - CogNonCog1-2M.sh
 - CogNonCog3-4M.sh
 - CogNonCog5-6M.sh 
