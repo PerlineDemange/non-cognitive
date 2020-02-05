@@ -5,7 +5,7 @@ Add ManhanttanPlot.r when final
 
 This model takes GWAS summary statistics for educational attainment and cognitive performance, and fits a model where the SNP effects on EA shared with cognitive ability (i.e. cog) are estimated as well as the SNP effects on educational attainment not shared with cognitive ability (i.e. non-cog). The scripts are developed to run on the [LISA system](https://userinfo.surfsara.nl/systems/lisa), which may mean you need to modify them to get them to run on your IT infrastructure. 
 
-A tutorial to run the GWAS-by-subtration is also available [here](https://rpubs.com/MichelNivard/565885).
+A tutorial to run a GWAS-by-subtraction is also available [here](https://rpubs.com/MichelNivard/565885).
 
 
 For general info on running GenomicSEM see: https://github.com/MichelNivard/GenomicSEM/wiki 
