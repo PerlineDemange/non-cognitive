@@ -1,5 +1,5 @@
-_Genetics correlations reported in the paper and in Supplementary table X are done 
-following the methods in the folder *With Cog and NonCog summary statistics*._
+__Genetics correlations reported in the paper and in Supplementary table X are done 
+following the methods in the folder *With Cog and NonCog summary statistics*.__
 
 Scripts to the percentage
 of the genetic covariance between educational attainment and the target traits that was explained by 
