@@ -8,3 +8,6 @@ Code used to create the GWAS-by-subtraction of non-cognitive abilities, and for 
 4. Polygenic score analyses 
 5. Transcriptome-wide analysis
 6. Bioannotation analyses with MAGMA and stratified LDscore regression
+
+
+Code was written with GenomicSEM_0.0.2 
