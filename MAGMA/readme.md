@@ -11,7 +11,7 @@ More information on how to run MAGMA analyses on MAGMA's website: https://ctg.cn
 - output: in MAGMA/Annotations/ 
 
 *02_gene_analysis_MAGMA_cog.bash/02_gene_analysis_MAGMA_noncog.bash*: Realises the gene analysis: quantify the degree of association between the genes and the phenotype
-- input: output of 01, Cognitive_GWAS_short_New.txt/Non_Cognitive_GWAS_short_New.txt, g1000_eur reference genome data
+- input: output of 01, summary statistics of Cog and NonCog, g1000_eur reference genome data
 - output: in MAGMA/Genes_analysis/Cog (or NonCog) .out is nice readable output and .genes.raw is to use in the gene-set analysis.
 
 *03_merge_gene_analysis_results.txt*: Use the merge function in MAGMA to combine the per chromosome .raw results in one file
