@@ -7,6 +7,6 @@ We used precomputed brain gene expression weights available on the FUSION websit
 
 We followed the detailed guidelines from the FUSION website. We run the TWAS on the cluster computer with the script: *TWAS_brain_noncog.bash* (identical procedure for Cog). 
 
-We merged the results (shunked per chromosomes) with *combine_chr_files.txt*. As recommended by Gusev et al. we do not include the MHC region of chromosome 6 in our final results. 
+We merged the results (chunked per chromosomes) with *combine_chr_files.txt*. As recommended by Gusev et al. we do not include the MHC region of chromosome 6 in our final results. 
 
 Figure SX was created with *Twas_comparison.R*. **Need to clean up and add this script**
