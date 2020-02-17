@@ -18,11 +18,11 @@ For general info on running GenomicSEM see: https://github.com/MichelNivard/Geno
 - input: Sumstats/Lee_2018_GWAS_CP_all.txt, Sumstats/meta_education_lee_23andMe_adjust_rsid.txt
 - output: Sumstats.RData
 
-*ModelwoSNP.R*: run the model without SNP with GSEM
+*ModelwoSNP.R*: run the model without SNP with GenomicSEM
 - input: LDSCoutputCogNonCog.RData
 - output: Modeloutput_with23andMe.Rdata
 
-*CogNonCog2.R*: run our model with SNP effects with GSEM, done on cluster computer LISA with the following files (we split the analysis to make it manageable): 
+*CogNonCog2.R*: run our model with SNP effects with GenomicSEM, done on cluster computer LISA with the following files (we split the analysis to make it manageable): 
 - CogNonCog1-2M.sh
 - CogNonCog3-4M.sh
 - CogNonCog5-6M.sh 
