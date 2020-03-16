@@ -11,29 +11,29 @@ For general info on running GenomicSEM see: https://github.com/MichelNivard/Geno
 - input: Sumstats/Lee_2018_GWAS_CP_all.txt, Sumstats/meta_education_lee_23andMe_adjust_rsid.txt
 - output: LDSCoutputCogNonCog.RData
 
-*PrepareDataSumstats.R* done on cluster computer with PrepSumstats.bash
+`PrepareDataSumstats.R` done on cluster computer with PrepSumstats.bash
 - input: Sumstats/Lee_2018_GWAS_CP_all.txt, Sumstats/meta_education_lee_23andMe_adjust_rsid.txt
 - output: Sumstats.RData
 
-*ModelwoSNP.R*: run the GWAS-by-subtraction model without SNP effects
+`ModelwoSNP.R`: run the GWAS-by-subtraction model without SNP effects
 - input: LDSCoutputCogNonCog.RData
 - output: Modeloutput_with23andMe.Rdata
 
-*CogNonCog2.R*: run our model with SNP effects with GenomicSEM, done on cluster computer LISA with the following files (we split the analysis to make it manageable): 
-- CogNonCog1-2M.sh
-- CogNonCog3-4M.sh
-- CogNonCog5-6M.sh 
-- CogNonCog7-8M.sh
+`CogNonCog2.R`: run our model with SNP effects with GenomicSEM, done on cluster computer LISA with the following files (we split the analysis to make it manageable): 
+- `CogNonCog1-2M.sh`
+- `CogNonCog3-4M.sh`
+- `CogNonCog5-6M.sh`
+- `CogNonCog7-8M.sh`
 - output: (LISA and computer)/output : cognitive*m.Rda and noncog*m.Rda 
 
-*MergingandCleaning.R* 
+`MergingandCleaning.R` 
 - outputs are full GWAS: 
 - Cognitive_GWAS_with23andMe.Rda, Cognitive_GWAS_with23andMe.txt, Cognitive_GWAS_short_with23andMe.txt
 - Non_Cognitive_GWAS_with23andMe.Rda, Non_Cognitive_GWAS_with23andMe.txt, Non_Cognitive_GWAS_short_with23andMe.txt
 
-*HowtoPruneforLD*: identify independent hits, done in interactive mode on LISA
+`HowtoPruneforLD`: identify independent hits, done in interactive mode on LISA
 
-*Manhattan_plot_HillIp.R*: make the manhattan plot 
+`Manhattan_plot_HillIp.R`: make the manhattan plot 
 
 GWAS Output: 
 - Cog GWAS: Cognitive_GWAS(_short)_with23andMe.txt
