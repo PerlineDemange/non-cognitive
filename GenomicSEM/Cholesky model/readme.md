@@ -1,6 +1,3 @@
-**TO ADAPT AND COMPLETE**  
-Add ManhanttanPlot.r when final
-
 # Cholesky model in Genomic SEM (GWAS-by-subtraction) 
 
 This model takes GWAS summary statistics for educational attainment and cognitive performance, and fits a model where the SNP effects on EA shared with cognitive ability (i.e. cog) are estimated as well as the SNP effects on educational attainment not shared with cognitive ability (i.e. non-cog). The scripts are developed to run on the [LISA system](https://userinfo.surfsara.nl/systems/lisa), which may mean you need to modify them to get them to run on your IT infrastructure. 
@@ -10,7 +7,7 @@ A tutorial to run a GWAS-by-subtraction is also available [here](https://rpubs.c
 
 For general info on running GenomicSEM see: https://github.com/MichelNivard/GenomicSEM/wiki 
 
-*PrepLDSCoutput.R*
+`PrepLDSCoutput.R`
 - input: Sumstats/Lee_2018_GWAS_CP_all.txt, Sumstats/meta_education_lee_23andMe_adjust_rsid.txt
 - output: LDSCoutputCogNonCog.RData
 
@@ -18,7 +15,7 @@ For general info on running GenomicSEM see: https://github.com/MichelNivard/Geno
 - input: Sumstats/Lee_2018_GWAS_CP_all.txt, Sumstats/meta_education_lee_23andMe_adjust_rsid.txt
 - output: Sumstats.RData
 
-*ModelwoSNP.R*: run the model without SNP with GenomicSEM
+*ModelwoSNP.R*: run the GWAS-by-subtraction model without SNP effects
 - input: LDSCoutputCogNonCog.RData
 - output: Modeloutput_with23andMe.Rdata
 
@@ -35,10 +32,8 @@ For general info on running GenomicSEM see: https://github.com/MichelNivard/Geno
 - Non_Cognitive_GWAS_with23andMe.Rda, Non_Cognitive_GWAS_with23andMe.txt, Non_Cognitive_GWAS_short_with23andMe.txt
 
 *HowtoPruneforLD*: identify independent hits, done in interactive mode on LISA
-- outputs: Cog_23andMe_sig_independent_signals.txt, NonCog_23andMe_sig_independent_signals.txt		
 
-*Manhattanplot.R*
-- output: Manhattanplot_with23andMe.png
+*Manhattan_plot_HillIp.R*: make the manhattan plot 
 
 GWAS Output: 
 - Cog GWAS: Cognitive_GWAS(_short)_with23andMe.txt
