@@ -9,4 +9,4 @@ Genetic correlations between a trait, Cog, NonCog and EA were done with the help
 
 3) Estimate the genetic correlations (unconstrained model) and chi-square test.  With Cog and NonCog this was done with the script `Gene_cor_GenSEM_LISA_gencor.R` (calling `gencor_function.R`) used in the bash job `rG_GenSEM_gencor_traitcategory.sh`. With EA, this was done with script `Gene_cor_GenSEM_LISA_gencor_EA.R` (calling `gencor_EA_function.R`) used in the bash job `rG_GenSEM_gencor_EA_traitcategory.sh`.  
 
-4) FDR correction of p-values and Figures: **ADD script** 
+4) `Figures_fdr_correction.R`: FDR correction of p-values and code for Figures 3, 4 and Supplementary Figure 2
