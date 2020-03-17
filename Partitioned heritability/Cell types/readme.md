@@ -16,8 +16,8 @@ These scripts were adapted from scripts by Hill Ip, and use the functions `make.
 `01_Annotation_ldsc_script_munge.bash`: Munge the sumstats to be able to use with LDSC \
 `02_annotation_Noncog_mice.sh` and `02_annotation_cog_mice.sh`: Run the partitioned heritability analysis. Jobs that are run for annotation with the help of the next file:\
 `03_script_run_all-annotations.bash`: Run the previous scripts over a list of annotations. \
-`04_create_results_file.bash`: Use the outputs of the previous files and combine them in one file per trait: the output is one line per annotation. We used the output created with the union annotation (we do not use the output created without the union annotation ".NO_UNION.results"). 
+`04_create_results_file.bash`: Use the outputs of the previous files and combine them in one file per trait: the output is one line per annotation. We used the output created with the union annotation (we do not use the output created without the union annotation ".NO_UNION.results"). \
+`05_Explore_merge_results_scatterplot.R`: Compare the coefficients between Cog and NonCog, create Supplementary Figure 7
 
-
-
-## Add 05_explore to create fig + final data
+## Compare LDSC and MAGMA gene-set analysis
+`06_Compare_MAGMA_LDSC_CogNonCog_23andMe_final.R`
