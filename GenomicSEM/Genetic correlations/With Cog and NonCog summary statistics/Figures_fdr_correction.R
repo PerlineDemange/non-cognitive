@@ -15,13 +15,12 @@ setwd("C:/Users/PDE430/Documents/CogNonCog/Analyses/Genetic_correlations/Final_a
 rgs <- read.csv("rG_CogNonCog_EA_alltraits_23andMe_030220_fdrcorrected.csv",header=T,sep = ",", strip.white=T)
 
 ## Adjust Pvalues 
-rgs$cogT_P_uncons_fdr <- p.adjust(rgs$cogT_P_uncons, method="fdr") 
-rgs$noncogT_P_uncons_fdr <- p.adjust(rgs$noncogT_P_uncons, method="fdr")
-rgs$T_pval_fdr <- p.adjust(rgs$T_pval, method="fdr")
-rgs$T_pval_bonf <- p.adjust(rgs$T_pval, method="bonferroni")
-write.csv(rgs, "rG_CogNonCog_EA_alltraits_23andMe_030220_fdrcorrected.csv", row.names=FALSE)
-
-rgs <- read.csv("rG_CogNonCog_EA_alltraits_23andMe_030220_fdrcorrected.csv",header=T,sep = ",", strip.white=T)
+#rgs$cogT_P_uncons_fdr <- p.adjust(rgs$cogT_P_uncons, method="fdr") 
+#rgs$noncogT_P_uncons_fdr <- p.adjust(rgs$noncogT_P_uncons, method="fdr")
+#rgs$T_pval_fdr <- p.adjust(rgs$T_pval, method="fdr")
+#rgs$T_pval_bonf <- p.adjust(rgs$T_pval, method="bonferroni")
+#write.csv(rgs, "rG_CogNonCog_EA_alltraits_23andMe_030220_fdrcorrected.csv", row.names=FALSE)
+#rgs <- read.csv("rG_CogNonCog_EA_alltraits_23andMe_030220_fdrcorrected.csv",header=T,sep = ",", strip.white=T)
 
 ## Define categories 
 ses <- c("Household income", "Neighborhood deprivation","Longevity")
@@ -34,7 +33,7 @@ personality_traits <- c("Openness","Conscientiousness","Extraversion","Agreeable
 mental_health_traits <- c("Schizophrenia","Bipolar Disorder","Obsessive Compulsive Disorder","Anorexia Nervosa","Attention Deficit Hyperactivity Disorder","Major Depressive Disorder",
                           "Autism Spectrum Disorder")
 
-supp <- c("Birth Weight", "BMI", "Chronotype", "Height", "Highest math class taken", "Insomnia", "Loneliness", "Mind in the Eyes score", "Self-rated health", "Self-reported math ability", "Self-reported empathy", "Subjective wellbeing", "Tiredness")
+supp <- c("Birth weight", "BMI", "Chronotype", "Height", "Highest math class taken", "Insomnia", "Loneliness", "Mind in the Eyes score", "Self-rated health", "Self-reported math ability", "Self-reported empathy", "Subjective wellbeing", "Tiredness")
 
 
 # add a column with the category name 
@@ -64,15 +63,16 @@ rgs_fig4$trait.name_f <- factor(rgs_fig4$trait.name, levels=c("Household income"
                                                               "Schizophrenia","Bipolar Disorder","Obsessive Compulsive Disorder","Anorexia Nervosa","Attention Deficit Hyperactivity Disorder","Major Depressive Disorder",
                                                               "Autism Spectrum Disorder"))
 
-rgs_fig4$trait.name_f <- factor(rgs_fig4$trait.name_f, levels=c("Household income", "Neighborhood deprivation","Longevity",
-                                                                "Openness","Conscientiousness","Extraversion","Agreeableness","Neuroticism",
-                                                                "Risk tolerance", "Delay discounting",
-                                                                "Risk Behaviour Composite","Speeding propensity", "Ever smoker", "Age at smoking initiation", "Cigarettes per day", 
-                                                                "Alcohol use", "Drinks per week", "Alcohol dependence", "Cannabis use",
-                                                                "Age at menarche","Age at first sex", "Number of sexual partners", "Age at first birth – Women", "Age at first birth – Men",
-                                                                "Number children ever born – Women", "Number children ever born – Men", "Age at menopause",
-                                                                "Schizophrenia","Bipolar Disorder","Obsessive Compulsive Disorder","Anorexia Nervosa","Attention Deficit Hyperactivity Disorder","Major Depressive Disorder",
-                                                                "Autism Spectrum Disorder"),labels = paste0(rgs_fig4$trait.name_f, "\n", rgs_fig4$article))
+#rgs_fig4$trait.name_f <- factor(rgs_fig4$trait.name_f, levels=c("Household income", "Neighborhood deprivation","Longevity",
+#                                                                "Openness","Conscientiousness","Extraversion","Agreeableness","Neuroticism",
+#                                                                "Risk tolerance", "Delay discounting",
+#                                                                "Risk Behaviour Composite","Speeding propensity", "Ever smoker", "Age at smoking initiation", "Cigarettes per day", 
+#                                                                "Alcohol use", "Drinks per week", "Alcohol dependence", "Cannabis use",
+#                                                                "Age at menarche","Age at first sex", "Number of sexual partners", "Age at first birth – Women", "Age at first birth – Men",
+#                                                                "Number children ever born – Women", "Number children ever born – Men", "Age at menopause",
+#                                                                "Schizophrenia","Bipolar Disorder","Obsessive Compulsive Disorder","Anorexia Nervosa","Attention Deficit Hyperactivity Disorder","Major Depressive Disorder",
+#                                                                "Autism Spectrum Disorder"),labels = paste0(rgs_fig4$trait.name_f, "\n", rgs_fig4$article))
+
 ### Fig 4 ###
 
 pdf("rG_fig4_NG_130220.pdf",width=9,height=12) #14
