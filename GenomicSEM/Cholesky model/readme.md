@@ -23,3 +23,5 @@ For general info on running GenomicSEM see: https://github.com/MichelNivard/Geno
 `HowtoPruneforLD`: identify independent hits, done in interactive mode on LISA
 
 `Manhattan_plot_HillIp.R`: make the manhattan plot 
+
+`Calculation_samplesize.R`: compute the effective sample size of the GWAS, following Mallard et al. 2019
