@@ -1,0 +1,49 @@
+Phenotype,Trait_name,munge_name,Filename,N_total,Cases_control,Cases,Controls,Downloaded,Sample_prevalence,Population_prevalence 
+Age at first birth - Men,AFB_men,AFB_men.sumstats.gz,AgeFirstBirth_Male.txt,48408,no,NA,NA,2018_12_07,NA,NA
+Age at first birth - Women,AFB_women,AFB_women.sumstats.gz,AgeFirstBirth_Female.txt,180286,no,NA,NA,2018_12_07,NA,NA
+Age at first sex,Age_first_sex,Age_first_sex.sumstats.gz,CLEANED.UKB_A_AGE_FIRST_SEX,357187,no,NA,NA,2019_03_04,NA,NA
+Age at menarche,Age_menarche_2014,Age_menarche_2014.sumstats.gz,data_menarche_Perry2014.txt,132989,no,NA,NA,2018_12_17,NA,NA
+Age at menopause,Age_menopause,Age_menopause.sumstats.gz,Menopause_HapMap2_DayNG2015_18112015.txt,69360,no,NA,NA,2018_12_11,NA,NA
+Age at smoking initiation,Age_smoking_init,Age_smoking_init.sumstats.gz,tag.logonset.tbl,24114,no,NA,NA,2018_12_05,NA,NA
+Agreeableness,Agreeableness,Agreeableness.sumstats.gz,agreeableness.pval.23andMe.sumstats,76548,no,NA,NA,2018_09_07,NA,NA
+Alcohol dependence,Alcohol_dep,Alcohol_dep.sumstats.gz,alcde.eur_unrelated_modified_final.txt,38686,yes,10206,28480,2018_12_11,0.26381637,0.159
+Alcohol use,Alcohol_use,Alcohol_use.sumstats.gz,data_cont_alcohol.txt,70460,no,NA,NA,2018_12_05,NA,NA
+Anorexia nervosa,Anorexia,Anorexia.sumstats.gz,pgcAN2.2019-07.vcf.tsv,72517,yes,16992,55525,2019_08_01,0.23431747,0.02
+Attention Deficit Hyperactivity Disorder,ADHD,ADHD.sumstats.gz,ADHD_eur_jun2017_pgc,53293,yes,19099,34194,2018_08_29,0.358377273,0.05
+Autism Spectrum Disorder,ASD,ASD.sumstats.gz,iPSYCH-PGC_ASD_Nov2017,46351,yes,18382,27969,2018_09_05,0.396582598,0.0122
+Bipolar Disorder,BD,BD.sumstats.gz,BDvsCONT.sumstats,41653,yes,20129,21524,2018_08_31,0.483254507,0.01
+Birth weight,Birth_weigth,Birth_weigth.sumstats.gz,BW3_EUR_summary_stats.txt,143677,no ,NA,NA,2018_12_07,NA,NA
+BMI,BMI,BMI.sumstats.gz,Meta-analysis_Locke_et_al+UKBiobank_2018_UPDATED.txt,700000,no,NA,NA,2018_12_05,NA,NA
+Cannabis use,Cannabis,Cannabis.sumstats.gz,Cannabis_ICC_UKB,162082,yes,43380,118702,2018_09_06,0.267642305,0.3
+Childhood IQ,Childhood_IQ,Childhood_IQ.sumstats.gz,CHIC_Summary_Benyamin2014,12441,no,NA,NA,2018_12_04,NA,NA
+Chronotype,Chronotype_2016,Chronotype_2016.sumstats.gz,Chronotype_SIN_BOLT.output_plus.metrics_MAF0.001_HWE1E-5_qual0.4.txt,128266,no,NA,NA,2018_12_17,NA,NA
+Cigarettes per day,Cig_per_day,Cig_per_day.sumstats.gz,tag.cpd.tbl,38181,no,NA,NA,2018_12_05,NA,NA
+Conscientiousness,Conscientiousness,Conscientiousness.sumstats.gz,conscientiousness.pval.23andMe.sumstats,76551,no,NA,NA,2018_09_08,NA,NA
+Delay discounting,Delay_Discounting,Delay_Discounting.sumstats.gz,delaydiscounting_gwas_complete.txt,23217,no,NA,NA,2019_06_11,NA,NA
+Drinks per week,Drinks_per_week,Drinks_per_week.sumstats.gz,DRINKS_PER_WEEK_GWAS.txt?dl=0,414343,no,NA,NA,2018_12_11,NA,NA
+Ever smoker,Ever_smoker ,Ever_smoker .sumstats.gz,EVER_SMOKER_GWAS_MA_UKB+TAG.txt?dl=0,518633,yes ,NA,NA,2019_03_04,0.474664,0.475
+Extraversion,Extraversion,Extraversion.sumstats.gz,extraversion.pval.23andMe.sumstats,76600,no,NA,NA,2018_09_09,NA,NA
+Height,Height,Height.sumstats.gz,Meta-analysis_Wood_et_al+UKBiobank_2018.txt,700000,no,NA,NA,2018_12_05,NA,NA
+Highest math class taken,Highest_math,Highest_math.sumstats.gz,highest_math_gwas_complete.txt,430445,no,NA,NA,2019_03_19,NA,NA
+Household income,Household_income,Household_income.sumstats.gz,Hill2016_UKB_Income_summary_results_21112016.txt,112151,no,NA,NA,2018_12_04,NA,NA
+Insomnia,Insomnia,Insomnia.sumstats.gz,Insomnia_sumstats_Jansenetal.txt,386533,yes,109402,277131,2019_03_31,0.283,0.27
+Loneliness,Loneliness,Loneliness.sumstats.gz,loneliness_2019.LOO_23andMe,553013,no,NA,NA,2020_12_02,NA,NA
+Longevity,Longevity2,Longevity2.sumstats.gz,lifegen_phase2_bothpl_alldr_2017_09_18.txt,1012240,no ,NA,NA,2020_01_20,NA,NA
+Major Depressive Disorder,MDD,MDD.sumstats.gz,PGC_UKB_depression_genome-wide.txt,500199,yes,170756,329443,2019_09_02,0.341376,0.15
+Mind in the Eyes score,Cognitive_Empathy,Cognitive_Empathy.sumstats.gz,mind_eyes_gwas_complete.txt,88056,no ,NA,NA,2019_06_11,NA,NA
+Neighborhood deprivation,Social_deprivation,Social_deprivation.sumstats.gz,Hill2016_UKB_Townsend_summary_results_08112016.txt,112151,no,NA,NA,2018_12_04,NA,NA
+Neuroticism,Neuroticism,Neuroticism.sumstats.gz,neuroticism.pval.23andMe.sumstats,76581,no,NA,NA,2018_09_06,NA,NA
+Number children ever born - Men,NEB_men,NEB_men.sumstats.gz,NumberChildrenEverBorn_Male.txt,92935,no,NA,NA,2018_12_07,NA,NA
+Number children ever born - Women,NEB_women,NEB_women.sumstats.gz,NumberChildrenEverBorn_Female.txt,211595,no,NA,NA,2018_12_07,NA,NA
+Number of sexual partners,Nb_sexual_partners,Nb_sexual_partners.sumstats.gz,NUMBER_SEXUAL_PARTNERS_GWAS.txt?dl=0,370711,no,NA,NA,2018_12_11,NA,NA
+Obsessive Compulsive Disorder,OCD,OCD.sumstats.gz,ocd_aug2017,9725,yes,2688,7037,2018_09_05,0.276401028,0.015
+Openness,Openness,Openness.sumstats.gz,openness.pval.23andMe.sumstats,76551,no,NA,NA,2018_09_05,NA,NA
+Risk Behaviour Composite,Risk_PC,Risk_PC.sumstats.gz,RISK_PC1_GWAS.txt?dl=0,315894,no,NA,NA,2018_12_11,NA,NA
+Risk tolerance,Risk_tolerance,Risk_tolerance.sumstats.gz,RISK_GWAS_MA_UKB+replication.txt?dl=0,466571,no,NA,NA,2018_12_11,NA,NA
+Schizophrenia,SCZ,SCZ.sumstats.gz,PGC_SCZ49EUR.sh2_mds10_1000G-frq_2,77096,yes,33640,43456,2018_08_31,0.43633911,0.01
+Self-rated health,Self_Rated_Health,Self_Rated_Health.sumstats.gz,Harris2016_UKB_self_rated_health_summary_results_10112016.txt,111749,no ,NA,NA,2019_06_13,NA,NA
+Self-reported empathy ,Empathy,Empathy.sumstats.gz,empathy_gwas_complete.txt,46861,no,NA,NA,2019_03_19,NA,NA
+Self-reported math ability,Math_ability,Math_ability.sumstats.gz,math_ability_gwas_complete.txt,564698,no,NA,NA,2019_03_19,NA,NA
+Speeding propensity,Speeding_prop,Speeding_prop.sumstats.gz,AUTOMOBILE_SPEEDING_PROPENSITY_GWAS.txt?dl=0,404291,no,NA,NA,2018_12_11,NA,NA
+Subjective wellbeing,Wellbeing,Wellbeing.sumstats.gz,SWB_Full.txt,204966,no ,NA,NA,2019_06_13,NA,NA
+Tiredness,Tiredness,Tiredness.sumstats.gz,Deary_2017_UKB_self_reported_tiredness_summary_results_15022017.txt,108976,no ,NA,NA,2019_06_11,NA,NA

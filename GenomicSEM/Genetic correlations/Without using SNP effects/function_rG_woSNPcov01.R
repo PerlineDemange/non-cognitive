@@ -6,7 +6,7 @@
 ##################################################
 
 
-LDSCoutput_rG_woSNP <- function(data1, data2, data3, sample.prev_trait, population.prev_trait, trait.name){
+LDSCoutput_rG_woSNPcov01 <- function(data1, data2, data3, sample.prev_trait, population.prev_trait, trait.name){
   
   traits <- c(data1, data2, data3)
   sample.prev <- c(NA,NA,sample.prev_trait) 
@@ -25,7 +25,7 @@ LDSCoutput_rG_woSNP <- function(data1, data2, data3, sample.prev_trait, populati
   CP~~0*CP
   EA~~0*EA
   T~~0*T
-  C~~0*NC
+  C~~0.1*NC
   CP~~0*EA
   CP~~0*T
   EA~~0*T

@@ -7,7 +7,7 @@ outputName = as.character(args[2])
 #packages
 require(GenomicSEM)
 library(data.table)
-source("function_rG_woSNP.R")
+source("function_rG_woSNPcov01.R")
 
 ### Load data ###
 
@@ -24,7 +24,7 @@ mungefile <- as.vector(data$munge_name)
 
 rG_woSNP_results <- NULL
 for (i in 1:length(mungefile)) {
-  results <- LDSCoutput_rG_woSNP("CP.sumstats.gz","EA.sumstats.gz", mungefile[i], sampleprev[i], populationprev[i], traitname[i])
+  results <- LDSCoutput_rG_woSNPcov01("CP.sumstats.gz","EA.sumstats.gz", mungefile[i], sampleprev[i], populationprev[i], traitname[i])
   rG_woSNP_results <- rbind(rG_woSNP_results, results)  
   }
 
