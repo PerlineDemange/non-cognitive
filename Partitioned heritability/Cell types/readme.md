@@ -19,5 +19,7 @@ These scripts were adapted from scripts by Hill Ip, and use the functions `make.
 `04_create_results_file.bash`: Use the outputs of the previous files and combine them in one file per trait: the output is one line per annotation. We used the output created with the union annotation (we do not use the output created without the union annotation ".NO_UNION.results"). \
 `05_Explore_merge_results_scatterplot.R`: Compare the coefficients between Cog and NonCog, create Supplementary Figure 7
 
+Files ending by `_jackkinfe.sh` were used to computed SE of the coefficients, and jackknifed SE of the difference between Cog and NonCog Coefficients. 
+
 ## Compare LDSC and MAGMA gene-set analysis
 `06_Compare_MAGMA_LDSC_CogNonCog_23andMe_final.R`
