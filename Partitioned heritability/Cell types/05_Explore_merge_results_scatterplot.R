@@ -146,7 +146,7 @@ myvars <- c("ClusterName", "pval_cor_bonf.Cog", "pval_cor_bonf.Noncog", "Class")
 LDSC_fig_Pbonf <- LDSC[myvars]
 LDSC_fig_Pbonf <- melt(LDSC_fig_Pbonf, id=c("ClusterName", "Class"))
 names(LDSC_fig_Pbonf) <- c("Celltype", "Class", "Trait", "Pval_bonferroni")
-LDSC_fig_Pbonf$Trait <- as.character(LDSC_fig_Pnocor$Trait)
+LDSC_fig_Pbonf$Trait <- as.character(LDSC_fig_Pbonf$Trait)
 LDSC_fig_Pbonf$Trait[LDSC_fig_Pbonf$Trait == "pval_cor_bonf.Cog"] <- "Cog"
 LDSC_fig_Pbonf$Trait[LDSC_fig_Pbonf$Trait == "pval_cor_bonf.Noncog"] <- "Noncog"
 head(LDSC_fig_Pbonf)
@@ -158,13 +158,25 @@ head(LDSC_fig_tot)
 LDSC_fig_tot$fill <- ifelse(LDSC_fig_tot$Pval_bonferroni < 0.05, "Bonferroni significant", ifelse(LDSC_fig_tot$Pval_fdr < 0.05, "FDR significant", "NS")) 
 LDSC_fig_tot$fill <- factor(LDSC_fig_tot$fill, levels=c('NS','FDR significant', 'Bonferroni significant'))
                                                                     
+LDSC_fig_tot1 = LDSC_fig_tot [LDSC_fig_tot$TaxonomyRank3_f != "Telencephalon interneurons", ]
+LDSC_fig_tot2 = LDSC_fig_tot1[LDSC_fig_tot1$TaxonomyRank3_f != "Telencephalon projecting neurons", ]
+LDSC_fig_tot3 = LDSC_fig_tot2[LDSC_fig_tot2$TaxonomyRank3_f != "Cerebellum neurons", ]
+LDSC_fig_tot4 = LDSC_fig_tot3[LDSC_fig_tot3$TaxonomyRank3_f != "Di- and mesencephalon neurons", ]
+LDSC_fig_tot5 = LDSC_fig_tot4[LDSC_fig_tot4$TaxonomyRank3_f != "Hindbrain neurons", ]
+LDSC_fig_tot6 = LDSC_fig_tot5[LDSC_fig_tot5$TaxonomyRank3_f != "Astroependymal cells", ]
+LDSC_fig_tot7 = LDSC_fig_tot6[LDSC_fig_tot6$TaxonomyRank3_f != "Enteric neurons", ]
 
-pdf("Annotations_LDSCtaxo_23andMe_sign.pdf",width=7,height=14)
-ggplot(LDSC_fig_tot, aes(x=reorder(Celltype, zscore), y=zscore, fill=fill)) +
+
+LDSC_fig_tot1a = LDSC_fig_tot7
+
+levels(LDSC_fig_tot1a$TaxonomyRank3_f)[levels(LDSC_fig_tot1a$TaxonomyRank3_f)=="Cholinergic, monoaminergic and peptidergic neurons"] <- "Cholinergic, monoaminergic and \n peptidergic neurons"
+#table(LDSC_fig_tot1$TaxonomyRank3_f)
+
+Figs71 = ggplot(LDSC_fig_tot1a, aes(x=reorder(Celltype, zscore), y=zscore, fill=fill)) +
   geom_bar(stat='identity') +
   facet_grid(TaxonomyRank3_f~Trait, scales = "free_y", space = "free_y", switch="x") +
   theme(axis.title.y=element_blank(),
-        axis.text=element_text(size=3),
+        axis.text=element_text(size=7),
         legend.title=element_blank(), 
         strip.text.y = element_text(angle=0), 
         legend.position = "none") +
@@ -173,9 +185,40 @@ ggplot(LDSC_fig_tot, aes(x=reorder(Celltype, zscore), y=zscore, fill=fill)) +
   #labs(title="Association of cognitive and nocgnitive skills with nervous system cell types",
   #     subtitle = "Cog and NonCog GWAS") + 
   coord_flip()
-dev.off()
+print(Figs71)
 
 
+LDSC_fig_tot0 = LDSC_fig_tot  [LDSC_fig_tot$TaxonomyRank3_f != "Spinal cord neurons", ]
+LDSC_fig_tot1 = LDSC_fig_tot0 [LDSC_fig_tot0$TaxonomyRank3_f != "Cholinergic, monoaminergic and peptidergic neurons", ]
+LDSC_fig_tot2 = LDSC_fig_tot1 [LDSC_fig_tot1$TaxonomyRank3_f != "Immature neural", ]
+LDSC_fig_tot3 = LDSC_fig_tot2 [LDSC_fig_tot2$TaxonomyRank3_f != "Oligodendrocytes", ]
+LDSC_fig_tot4 = LDSC_fig_tot3 [LDSC_fig_tot3$TaxonomyRank3_f != "Immune cells", ]
+LDSC_fig_tot5 = LDSC_fig_tot4 [LDSC_fig_tot4$TaxonomyRank3_f != "Neural crest-like glia", ]
+LDSC_fig_tot6 = LDSC_fig_tot5 [LDSC_fig_tot5$TaxonomyRank3_f != "Sympathetic neurons", ]
+LDSC_fig_tot7 = LDSC_fig_tot6 [LDSC_fig_tot6$TaxonomyRank3_f != "Vascular cells", ]
+LDSC_fig_tot8 = LDSC_fig_tot7 [LDSC_fig_tot7$TaxonomyRank3_f != "Peripheral sensory neurons", ]
+
+LDSC_fig_tot2 = LDSC_fig_tot8
+
+
+Figs72 = ggplot(LDSC_fig_tot2, aes(x=reorder(Celltype, zscore), y=zscore, fill=fill)) +
+  geom_bar(stat='identity') +
+  facet_grid(TaxonomyRank3_f~Trait, scales = "free_y", space = "free_y", switch="x") +
+  theme(axis.title.y=element_blank(),
+        axis.text=element_text(size=7),
+        legend.title=element_blank(), 
+        strip.text.y = element_text(angle=0), 
+        legend.position = "none") +
+  scale_fill_manual(values = c("#999999","#ffb31a", "#D55E00")) +
+  #bbc_style() +
+  #labs(title="Association of cognitive and nocgnitive skills with nervous system cell types",
+  #     subtitle = "Cog and NonCog GWAS") + 
+  coord_flip()
+#print(Figs72)
+figs7 = grid.arrange(Figs72, Figs71, nrow = 1)
+
+#ggsave(figs7, file="FigureS7_R1.png", width=15, height=15)
+#ggsave(figs7, file="FigureS7_R1.pdf", width=15, height=15)
 
 
 
