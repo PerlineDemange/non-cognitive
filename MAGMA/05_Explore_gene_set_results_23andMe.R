@@ -154,8 +154,10 @@ bonf_adj <- datagenes[datagenes$P_genes_adjusted<0.05,]
 head(bonf_adj)
 
 ##################################
-# Plots
+# Plot
 ####################################
+MAGMA <- as.data.frame(MAGMA)
+
 myvars <- c("VARIABLE", "z.Cog", "z.Noncog", "Class", "TaxonomyRank3")
 MAGMA_fig <- MAGMA[myvars]
 MAGMA_fig <- melt(MAGMA_fig, id=c("VARIABLE", "Class", "TaxonomyRank3"))
@@ -163,24 +165,100 @@ names(MAGMA_fig) <- c("Celltype", "Class","TaxonomyRank3", "Trait", "zscore")
 MAGMA_fig$Trait <- as.character(MAGMA_fig$Trait)
 MAGMA_fig$Trait[MAGMA_fig$Trait == "z.Cog"] <- "Cog"
 MAGMA_fig$Trait[MAGMA_fig$Trait == "z.Noncog"] <- "Noncog"
-MAGMA_fig$TaxonomyRank3_f <- factor(MAGMA_fig$TaxonomyRank3, levels=c('Telencephalon projecting neurons','Cerebellum neurons',
-                                                                      'Telencephalon interneurons','Hindbrain neurons', "Di- and mesencephalon neurons", "Astroependymal cells",
-                                                                      "Enteric neurons", 'Spinal cord neurons', "Cholinergic, monoaminergic and peptidergic neurons", "Immature neural", 
-                                                                      "Oligodendrocytes", "Immune cells", "Neural crest-like glia", "Sympathetic neurons", "Vascular cells", "Peripheral sensory neurons")) # create a factor to fix the order of the facets in the figure
+MAGMA_fig$TaxonomyRank3_f <- factor(MAGMA_fig$TaxonomyRank3, 
+                                    levels=c('Telencephalon projecting neurons','Cerebellum neurons',
+                                              'Telencephalon interneurons','Hindbrain neurons', "Di- and mesencephalon neurons", "Astroependymal cells",
+                                               "Enteric neurons", 'Spinal cord neurons', "Cholinergic, monoaminergic and peptidergic neurons", 
+                                             "Immature neural", "Oligodendrocytes", "Immune cells", "Neural crest-like glia", 
+                                             "Sympathetic neurons", "Vascular cells", "Peripheral sensory neurons")) # create a factor to fix the order of the facets in the figure
 
 
-pdf("Annotations_magmataxo_23andMe.pdf",width=7,height=14)
-ggplot(MAGMA_fig, aes(x=reorder(Celltype, zscore), y=zscore)) +
+myvars <- c("VARIABLE", "P.Cog_adjusted_bonf", "P.Noncog_adjusted_bonf", "Class")
+MAGMA_fig_P <- MAGMA[myvars]
+MAGMA_fig_P <- melt(MAGMA_fig_P, id=c("VARIABLE", "Class"))
+names(MAGMA_fig_P) <- c("Celltype", "Class", "Trait", "Pval_bonferroni")
+MAGMA_fig_P$Trait <- as.character(MAGMA_fig_P$Trait)
+MAGMA_fig_P$Trait[MAGMA_fig_P$Trait == "P.Cog_adjusted_bonf"] <- "Cog"
+MAGMA_fig_P$Trait[MAGMA_fig_P$Trait == "P.Noncog_adjusted_bonf"] <- "Noncog"
+head(MAGMA_fig_P)
+
+myvars <- c("VARIABLE", "P.Cog_adjusted_fdr", "P.Noncog_adjusted_fdr", "Class")
+MAGMA_fig_P_fdr <- MAGMA[myvars]
+MAGMA_fig_P_fdr <- melt(MAGMA_fig_P_fdr, id=c("VARIABLE", "Class"))
+names(MAGMA_fig_P_fdr) <- c("Celltype", "Class", "Trait", "Pval_fdr")
+MAGMA_fig_P_fdr$Trait <- as.character(MAGMA_fig_P_fdr$Trait)
+MAGMA_fig_P_fdr$Trait[MAGMA_fig_P_fdr$Trait == "P.Cog_adjusted_fdr"] <- "Cog"
+MAGMA_fig_P_fdr$Trait[MAGMA_fig_P_fdr$Trait == "P.Noncog_adjusted_fdr"] <- "Noncog"
+head(MAGMA_fig_P_fdr)
+
+MAGMA_fig_tot <- merge(MAGMA_fig, MAGMA_fig_P, by= c('Celltype', "Trait", "Class"))
+MAGMA_fig_tot <- merge(MAGMA_fig_tot, MAGMA_fig_P_fdr, by= c('Celltype', "Trait", "Class"))
+head(MAGMA_fig_tot)
+
+MAGMA_fig_tot$fill <- ifelse(MAGMA_fig_tot$Pval_bonferroni < 0.05, "Bonferroni significant", ifelse(MAGMA_fig_tot$Pval_fdr < 0.05, "FDR significant", "NS")) 
+MAGMA_fig_tot$fill <- factor(MAGMA_fig_tot$fill, levels=c('NS','FDR significant', 'Bonferroni significant'))
+
+
+MAGMA_fig_tot1 = MAGMA_fig_tot[MAGMA_fig_tot$TaxonomyRank3_f != "Telencephalon interneurons", ]
+MAGMA_fig_tot2 = MAGMA_fig_tot1[MAGMA_fig_tot1$TaxonomyRank3_f != "Telencephalon projecting neurons", ]
+MAGMA_fig_tot3 = MAGMA_fig_tot2[MAGMA_fig_tot2$TaxonomyRank3_f != "Cerebellum neurons", ]
+MAGMA_fig_tot4 = MAGMA_fig_tot3[MAGMA_fig_tot3$TaxonomyRank3_f != "Di- and mesencephalon neurons", ]
+MAGMA_fig_tot5 = MAGMA_fig_tot4[MAGMA_fig_tot4$TaxonomyRank3_f != "Hindbrain neurons", ]
+MAGMA_fig_tot6 = MAGMA_fig_tot5[MAGMA_fig_tot5$TaxonomyRank3_f != "Astroependymal cells", ]
+MAGMA_fig_tot7 = MAGMA_fig_tot6[MAGMA_fig_tot6$TaxonomyRank3_f != "Enteric neurons", ]
+
+
+MAGMA_fig_tot1a = MAGMA_fig_tot7
+
+levels(MAGMA_fig_tot1a$TaxonomyRank3_f)[levels(MAGMA_fig_tot1a$TaxonomyRank3_f)=="Cholinergic, monoaminergic and peptidergic neurons"] <- "Cholinergic, monoaminergic and \n peptidergic neurons"
+
+#pdf("Annotations_magmataxo_23andMe_sign.pdf",width=7,height=14)
+figS51 = ggplot(MAGMA_fig_tot1a, aes(x=reorder(Celltype, zscore), y=zscore, fill=fill)) +
   geom_bar(stat='identity') +
   facet_grid(TaxonomyRank3_f~Trait, scales = "free_y", space = "free_y", switch="x") +
   theme(axis.title.y=element_blank(),
-        axis.text=element_text(size=3),
+        axis.text=element_text(size=7),
         legend.title=element_blank(), 
-        strip.text.y = element_text(angle=0)) +
+        strip.text.y = element_text(angle=0), 
+        legend.position = "none") +
+   scale_fill_manual(values = c("#999999","#ffb31a", "#D55E00")) +
   #bbc_style() +
   #labs(title="Association of cognitive and nocgnitive skills with nervous system cell types",
   #     subtitle = "Cog and NonCog GWAS") + 
   coord_flip()
-dev.off()
+
+MAGMA_fig_tot0 = MAGMA_fig_tot  [MAGMA_fig_tot$TaxonomyRank3_f != "Spinal cord neurons", ]
+MAGMA_fig_tot1 = MAGMA_fig_tot0 [MAGMA_fig_tot0$TaxonomyRank3_f != "Cholinergic, monoaminergic and peptidergic neurons", ]
+MAGMA_fig_tot2 = MAGMA_fig_tot1 [MAGMA_fig_tot1$TaxonomyRank3_f != "Immature neural", ]
+MAGMA_fig_tot3 = MAGMA_fig_tot2 [MAGMA_fig_tot2$TaxonomyRank3_f != "Oligodendrocytes", ]
+MAGMA_fig_tot4 = MAGMA_fig_tot3 [MAGMA_fig_tot3$TaxonomyRank3_f != "Immune cells", ]
+MAGMA_fig_tot5 = MAGMA_fig_tot4 [MAGMA_fig_tot4$TaxonomyRank3_f != "Neural crest-like glia", ]
+MAGMA_fig_tot6 = MAGMA_fig_tot5 [MAGMA_fig_tot5$TaxonomyRank3_f != "Sympathetic neurons", ]
+MAGMA_fig_tot7 = MAGMA_fig_tot6 [MAGMA_fig_tot6$TaxonomyRank3_f != "Vascular cells", ]
+MAGMA_fig_tot8 = MAGMA_fig_tot7 [MAGMA_fig_tot7$TaxonomyRank3_f != "Peripheral sensory neurons", ]
+
+MAGMA_fig_tot2 = MAGMA_fig_tot8
+
+
+figS52 = ggplot(MAGMA_fig_tot2, aes(x=reorder(Celltype, zscore), y=zscore, fill=fill)) +
+  geom_bar(stat='identity') +
+  facet_grid(TaxonomyRank3_f~Trait, scales = "free_y", space = "free_y", switch="x") +
+  theme(axis.title.y=element_blank(),
+        axis.text=element_text(size=7),
+        legend.title=element_blank(), 
+        strip.text.y = element_text(angle=0), 
+        legend.position = "none") +
+   scale_fill_manual(values = c("#999999","#ffb31a", "#D55E00")) +
+  #bbc_style() +
+  #labs(title="Association of cognitive and nocgnitive skills with nervous system cell types",
+  #     subtitle = "Cog and NonCog GWAS") + 
+  coord_flip()
+
+
+library (gridExtra)
+figs5 = grid.arrange (figS52, figS51, nrow = 1)
+figs5
+#ggsave(figs5, file="FigureS5_R1.png", width=14, height=13)
+#ggsave(figs5, file="FigureS5_R1.pdf", width=15, height=15)
 
 
