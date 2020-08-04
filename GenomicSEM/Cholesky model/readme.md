@@ -6,7 +6,7 @@ A [tutorial to run a GWAS-by-subtraction](https://rpubs.com/MichelNivard/565885)
 
 For general info on running GenomicSEM see: https://github.com/MichelNivard/GenomicSEM/wiki 
 
-`PrepLDSCoutput.R`: munge the summary statitics (Step 1), and run the multivariate LDSC to obtain the covariance matrices (Step 2)
+`PrepLDSCoutput.R`: munge the summary statistics (Step 1), and run the multivariate LDSC to obtain the covariance matrices (Step 2)
 
 `PrepareDataSumstats.R` done on cluster computer with `PrepSumstats.bash`: prepare the summary statistics for GWAS (Step 3)
 
