@@ -9,4 +9,4 @@ We followed the detailed guidelines from the FUSION website. We run the TWAS on 
 
 We merged the results (chunked per chromosomes) with `combine_chr_files.txt`. As recommended by Gusev et al. we do not include the MHC region of chromosome 6 in our final results. 
 
-Supplementary Figure 8 was created with `Twas_comparison.R`. 
+Supplementary Figure 16 was created with `Twas_comparison.R`. 
