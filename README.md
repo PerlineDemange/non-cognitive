@@ -11,8 +11,6 @@ Code used to create the GWAS-by-subtraction of non-cognitive abilities, and for 
 7. [Transcriptome-wide analysis](https://github.com/MichelNivard/non-cognitive/tree/master/TWAS)
 
 
-
 Code was written with GenomicSEM_0.0.2 
-
 
 You can find the associated preprint [here](https://www.biorxiv.org/content/10.1101/2020.01.14.905794v1.abstract).
