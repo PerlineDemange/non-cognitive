@@ -1,10 +1,12 @@
 # Cholesky model in Genomic SEM (GWAS-by-subtraction) 
 
-This model takes GWAS summary statistics for educational attainment and cognitive performance, and fits a model where the SNP effects on EA shared with cognitive ability (i.e. *Cog*) are estimated as well as the SNP effects on educational attainment not shared with cognitive ability (i.e. *NonCog*). The scripts are developed to run on the [LISA system](https://userinfo.surfsara.nl/systems/lisa), which probably mean you need to modify them to get them to run on your IT infrastructure. 
+This model takes GWAS summary statistics for educational attainment and cognitive performance, and fits a model where the SNP effects on EA shared with cognitive ability (i.e. *Cog*) are estimated as well as the SNP effects on educational attainment not shared with cognitive ability (i.e. *NonCog*) (*Figure 1*). The scripts are developed to run on the [LISA system](https://userinfo.surfsara.nl/systems/lisa), which probably mean you need to modify them to get them to run on your IT infrastructure. 
 
 A [tutorial to run a GWAS-by-subtraction](https://rpubs.com/MichelNivard/565885) is also available.
 
 For general info on running GenomicSEM see: https://github.com/MichelNivard/GenomicSEM/wiki 
+
+## Scripts:
 
 `PrepLDSCoutput.R`: munge the summary statistics (Step 1), and run the multivariate LDSC to obtain the covariance matrices (Step 2)
 
@@ -13,6 +15,7 @@ For general info on running GenomicSEM see: https://github.com/MichelNivard/Geno
 `ModelwoSNP.R`: run the GWAS-by-subtraction model without SNP effects
 
 `CogNonCog2.R`: run the GWAS-by-subtraction with SNP effects with GenomicSEM, done on cluster computer LISA with the following files (we split the analysis to make it manageable): 
+
 - `CogNonCog1-2M.sh`
 - `CogNonCog3-4M.sh`
 - `CogNonCog5-6M.sh`
@@ -20,8 +23,8 @@ For general info on running GenomicSEM see: https://github.com/MichelNivard/Geno
 
 `MergingandCleaning.R`: merge the results files and clean the summary statistics 
 
-`HowtoPruneforLD`: identify independent hits, done in interactive mode on LISA
+`HowtoPruneforLD`: identify independent hits, done in interactive mode on LISA (as reported in the paper, it corresponds to  Baselmans et al's method in *Supp. Table 4*)
 
-`Manhattan_plot_HillIp.R`: make the manhattan plot 
+`Manhattan_plot_HillIp.R`: make the manhattan plot (*Figure 2* and *Supplementary Figure 1*)
 
-`Calculation_samplesize.R`: compute the effective sample size of the GWAS, following Mallard et al. 2019
+`Calculation_samplesize.R`: compute the effective sample size of the GWAS, following Mallard et al. 2020 (*Supplementary Note*)
