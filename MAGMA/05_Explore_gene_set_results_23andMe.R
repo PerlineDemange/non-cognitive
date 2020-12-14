@@ -2,7 +2,7 @@
 ## Project: CogNonCog 2018
 ## Script purpose: Combine the Cog and NonCog results from MAGMA gene set analysis together and with the description of the annotations
 ##                 Save MAGMA results in one txt file 
-##                 Create a scatterplot plotting Beta Cog against NonCog 
+##                 Create a scatterplot plotting z-score Cog against NonCog 
 ##                 Compare geneset enrichment between Cog and NonCog 
 ##                 Compare genes enrichment between Cog and NonCog 
 ##                 Create a plot with all genesets associations z-scores by Taxonomy 
@@ -46,7 +46,7 @@ head(total_annot)
 
 # Save result file 
 write.table(total_annot, "Results_MAGMA_annotation_CogNonCog_23andMe.txt", sep=" ")
-#total_annot <- read.table("Results_MAGMA_annotation_CogNonCog_23andMe.txt")
+total_annot <- read.table("Results_MAGMA_annotation_CogNonCog_23andMe.txt")
 
 ############################
 ### Add relevant columns ###
@@ -69,10 +69,17 @@ ggplot(total_annot, aes(x=BETA.Cog, y=BETA.Noncog, color = total_annot$Class)) +
   geom_point(size=3) +
   scale_color_manual(values=c("#000000", "#56B4E9", "#009E73", "#0072B2", "#D55E00", "#CC79A7", "#F0E442"))
 
-MAGMA$Significance <- ifelse(MAGMA$P.Cog_adjusted< 0.05, ifelse(MAGMA$P.Noncog_adjusted < 0.05, "Both", "Cog"), ifelse(MAGMA$P.Noncog_adjusted < 0.05, "NonCog", "None"))
-
-ggplot(MAGMA, aes(x=BETA.Cog, y=BETA.Noncog, color = Significance)) + 
-  geom_point(size=3)
+# with line corresponding to a zscore for a significant corrrected pvalue 0.005/265 = 0.00018867924 > zscore =3.56 https://planetcalc.com/7803/
+tiff("MAGMA_comparison.tiff", unit = "in", width = 8, height = 5,  res = 300)
+ggplot(MAGMA, aes(x=z.Cog, y=z.Noncog, color = MAGMA$TaxonomyRank2)) + 
+  geom_point(size=3) +
+  scale_color_manual(values=c("blue", "orange", "red", "#000000", "magenta3", "#009E73")) +
+  geom_hline(yintercept=3.56) +
+  geom_vline(xintercept=3.56) +
+  xlab("Cog Enrichment z-score") +
+  ylab("NonCog Enrichment z-score") + 
+  theme(legend.title = element_blank())
+dev.off()
 
 #################################################################
 ##  Description of gene set enriched Cog and Noncog
