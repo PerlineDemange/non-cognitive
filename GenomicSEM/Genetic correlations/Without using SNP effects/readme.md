@@ -26,7 +26,7 @@ The scripts `rG_all_CausalEACP.bash`, `run_rG_woSNP_causalEACP.R`, `function_rg_
 
 `gencor_causalEACP_clean_fig.R`: Get p-values and create *Supplementary Figure 9*
 
-Additionally, the script `script_reverse_cause.R` runs the Cog and NonCog GWAS for the genome-wide significant SNPs with model in *Supplementary Figure 7* and compares with z-tatistics from model in *Figure 1* (creates *Supplementary Figure 8*)
+Additionally, the script `script_reverse_cause.R` runs the Cog and NonCog GWAS for the genome-wide significant SNPs with model in *Supplementary Figure 7* and compares with z-statistics from model in *Figure 1* (creates *Supplementary Figure 8*)
 
 
 ## Probing potential biases due to cohort differences in SNP heritability 

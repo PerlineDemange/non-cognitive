@@ -6,7 +6,7 @@ More information on how to run MAGMA analyses on MAGMA's website: https://ctg.cn
 
 `01_annotation_snp_gene_window.bash:`: The file annotates each SNP to a gene. As the snp location file is divided per chromosome, the whole analysis is divided per chromosome. Adds a window around the genes.
 
-`02_gene_analysis_MAGMA_cog.bash`/`02_gene_analysis_MAGMA_noncog.bash`: Runs the gene analysis: quantify the degree of association between the genes and the phenotype
+`02_gene_analysis_MAGMA_cog_23andMe.bash`/`02_gene_analysis_MAGMA_noncog_23andMe.bash`: Runs the gene analysis: quantify the degree of association between the genes and the phenotype
 
 `03_merge_gene_analysis_results.txt`: Use the merge function in MAGMA to combine the per chromosome .raw results in one file
 
@@ -15,9 +15,5 @@ More information on how to run MAGMA analyses on MAGMA's website: https://ctg.cn
 
 `04_gene_set_analysis_MAGMA_Cog.bash`: Run the gene-set analysis. This cript runs both competitive and self-contained analysis, we used the competitive gen-set analysis results (Competitive gene-set analysis tests whether the genes in a gene-set are more strongly associated with the phenotype of interest than other genes)
 
-`05_Explore_gene_set_results.R`: Combine the Cog and NonCog results from MAGMA gene set analysis together and with the description of the annotations. 
-Save MAGMA results in one txt file. 
-Create a scatterplot plotting Beta Cog against NonCog. 
-Compare geneset enrichment between Cog and NonCog. 
-Compare genes enrichment between Cog and NonCog. 
-Create a plot with all genesets associations z-scores by Taxonomy. 
+`05_Explore_gene_set_results_23andMe.R`: Combine the Cog and NonCog results from MAGMA gene set analysis together and with the description of the annotations. 
+Save MAGMA results in one txt file. Compare genes and geneset enrichment between Cog and NonCog. Create Sup. Figures 13 and 14. 
