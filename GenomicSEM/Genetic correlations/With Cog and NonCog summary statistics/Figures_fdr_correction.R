@@ -3,12 +3,12 @@
 ## Script purpose: Figure for the genetic correlation data, cog and noncog
 ## Date: February 2020
 # Author: Perline Demange, Adapted from Abdel Abdellaoui's script  C:\Users\PDE430\Documents\CogNonCog\Abdel\loneline rG figure
+#  + Modified by Margherita Malanchini on May 23rd 2020
 ##################################################
 
 #install.packages("ggplot2")
 library(ggplot2)
-#library(tidyverse)
-library(dplyr)
+library(tidyverse); library(dplyr); library(ggtext) 
 
 setwd("C:/Users/PDE430/Documents/CogNonCog/Analyses/Genetic_correlations/Final_allchr/Results_LISA_with23andMe")
 
@@ -22,69 +22,87 @@ rgs <- read.csv("rG_CogNonCog_EA_alltraits_23andMe_030220_fdrcorrected.csv",head
 #write.csv(rgs, "rG_CogNonCog_EA_alltraits_23andMe_030220_fdrcorrected.csv", row.names=FALSE)
 #rgs <- read.csv("rG_CogNonCog_EA_alltraits_23andMe_030220_fdrcorrected.csv",header=T,sep = ",", strip.white=T)
 
-## Define categories 
-ses <- c("Household income", "Neighborhood deprivation","Longevity")
-decision_making <- c("Risk tolerance", "Delay discounting")
-fertility_risk <- c("Risk behaviour composite","Speeding propensity", "Ever smoker", "Age at smoking initiation", "Cigarettes per day", 
-                    "Alcohol use", "Drinks per week", "Alcohol dependence", "Cannabis use",
-                    "Age at menarche","Age at first sex", "Number of sexual partners", "Age at first birth – Women", "Age at first birth – Men",
-                    "Number children ever born – Women", "Number children ever born – Men", "Age at menopause")
-personality_traits <- c("Openness","Conscientiousness","Extraversion","Agreeableness","Neuroticism")
-mental_health_traits <- c("Schizophrenia","Bipolar Disorder","Obsessive Compulsive Disorder","Anorexia Nervosa","Attention Deficit Hyperactivity Disorder","Major Depressive Disorder",
-                          "Autism Spectrum Disorder")
+# Rename 
 
-supp <- c("Birth weight", "BMI", "Chronotype", "Height", "Highest math class taken", "Insomnia", "Loneliness", "Mind in the Eyes score", "Self-rated health", "Self-reported math ability", "Self-reported empathy", "Subjective wellbeing", "Tiredness")
+levels(rgs$trait.name)
+levels(rgs$trait.name)[levels(rgs$trait.name)=="Age at first birth \x96 Men"] <- "Age at first birth - men"
+levels(rgs$trait.name)[levels(rgs$trait.name)=="Age at first birth \x96 Women"] <- "Age at first birth - women"
+levels(rgs$trait.name)[levels(rgs$trait.name)=="Number children ever born \x96 Men"] <- "Number children ever born - men"
+levels(rgs$trait.name)[levels(rgs$trait.name)=="Number children ever born \x96 Women"] <- "Number children ever born - women"
+levels(rgs$trait.name)[levels(rgs$trait.name)=="Obsessive Compulsive Disorder"] <- "Obsessive-compulsive disorder"
+levels(rgs$trait.name)[levels(rgs$trait.name)=="Anorexia Nervosa"] <- "Anorexia nervosa"
+levels(rgs$trait.name)[levels(rgs$trait.name)=="Bipolar Disorder"] <- "Bipolar disorder"
+levels(rgs$trait.name)[levels(rgs$trait.name)=="Attention Deficit Hyperactivity Disorder"] <- "Attention deficit hyperactivity disorder"
+levels(rgs$trait.name)[levels(rgs$trait.name)=="Major Depressive Disorder"] <- "Major depressive disorder"
+levels(rgs$trait.name)[levels(rgs$trait.name)=="Autism Spectrum Disorder"] <- "Autism spectrum disorder"
+levels(rgs$trait.name)[levels(rgs$trait.name)=="Mind in the Eyes score"] <- "Mind in the eyes score"
+
+
+## Define categories 
+ses <-                  c("Household income", "Neighborhood deprivation","Longevity")
+decision_making <-      c("Risk tolerance", "Delay discounting")
+fertility_risk <-       c("Risk behaviour composite","Speeding propensity", "Ever smoker", 
+                          "Age at smoking initiation", "Cigarettes per day", 
+                          "Alcohol use", "Drinks per week", "Alcohol dependence", "Cannabis use",
+                          "Age at menarche","Age at first sex", "Number of sexual partners", "Age at first birth - women", 
+                          "Age at first birth - men", "Number children ever born - women", "Number children ever born - men", 
+                          "Age at menopause")
+personality_traits <-   c("Openness","Conscientiousness","Extraversion","Agreeableness","Neuroticism")
+mental_health_traits <- c("Schizophrenia","Bipolar disorder","Obsessive-compulsive disorder",
+                          "Anorexia nervosa","Attention deficit hyperactivity disorder",
+                          "Major depressive disorder","Autism spectrum disorder")
+supp <-                 c("Birth weight", "BMI", "Chronotype", "Height",
+                          "Insomnia", "Loneliness", "Mind in the eyes score", "Self-rated health",
+                          "Self-reported empathy", "Subjective wellbeing", 
+                          "Tiredness")
 
 
 # add a column with the category name 
 rgs$category <- NULL
 rgs$category[rgs$trait.name %in% mental_health_traits] <- "Psychiatry"
-rgs$category[rgs$trait.name %in% fertility_risk] <- "Risky Behaviours & Fertility"
+rgs$category[rgs$trait.name %in% fertility_risk] <- "Health-risk behavior & delayed fertility"
 rgs$category[rgs$trait.name %in% personality_traits] <- "Personality"
 rgs$category[rgs$trait.name %in% decision_making] <- "Decision"
 rgs$category[rgs$trait.name %in% ses] <- "SES-related"
 rgs$category[rgs$trait.name %in% supp] <- "Supplementary"
 
 
-
 ## To fix the order of the groups and traits 
 rgs$category_f <- factor(rgs$category, levels=c("SES-related", "Decision",
-                                                'Risky Behaviours & Fertility','Personality','Psychiatry')) # create a factor to fix the order of the facets in the figure
+                                                "Health-risk behavior & delayed fertility",
+                                                "Personality","Psychiatry")) # create a factor to fix the order of the facets in the figure
 
+rgs_fig4$trait.name_f <- factor(rgs_fig4$trait.name, levels=c(
+  "Household income", "Neighborhood deprivation","Longevity",
+  "Openness","Conscientiousness","Extraversion","Agreeableness","Neuroticism",
+  "Risk tolerance", "Delay discounting",
+  "Risk behaviour composite","Speeding propensity", "Ever smoker", "Age at smoking initiation", "Cigarettes per day", 
+  "Alcohol use", "Drinks per week", "Alcohol dependence", "Cannabis use",
+  "Age at menarche","Age at first sex", "Number of sexual partners", "Age at first birth - women", "Age at first birth - men",
+  "Number children ever born - women", "Number children ever born - men", "Age at menopause",
+  "Schizophrenia","Bipolar disorder","Obsessive-compulsive disorder","Anorexia nervosa",
+  "Attention deficit hyperactivity disorder","Major depressive disorder","Autism spectrum disorder"
+))
 
-rgs_fig4 <- rgs[which(rgs$trait.name %in% mental_health_traits | rgs$trait.name %in% fertility_risk | rgs$trait.name %in% personality_traits | rgs$trait.name %in% decision_making | rgs$trait.name %in% ses ),]
-rgs_fig4$trait.name_f <- factor(rgs_fig4$trait.name, levels=c("Household income", "Neighborhood deprivation","Longevity",
-                                                              "Openness","Conscientiousness","Extraversion","Agreeableness","Neuroticism",
-                                                              "Risk tolerance", "Delay discounting",
-                                                              "Risk behaviour composite","Speeding propensity", "Ever smoker", "Age at smoking initiation", "Cigarettes per day", 
-                                                              "Alcohol use", "Drinks per week", "Alcohol dependence", "Cannabis use",
-                                                              "Age at menarche","Age at first sex", "Number of sexual partners", "Age at first birth – Women", "Age at first birth – Men",
-                                                              "Number children ever born – Women", "Number children ever born – Men", "Age at menopause",
-                                                              "Schizophrenia","Bipolar Disorder","Obsessive Compulsive Disorder","Anorexia Nervosa","Attention Deficit Hyperactivity Disorder","Major Depressive Disorder",
-                                                              "Autism Spectrum Disorder"))
+levels(rgs_fig4$trait.name_f)[levels(rgs_fig4$trait.name_f)=="Risk tolerance"]  <- "General risk tolerance"
 
-#rgs_fig4$trait.name_f <- factor(rgs_fig4$trait.name_f, levels=c("Household income", "Neighborhood deprivation","Longevity",
-#                                                                "Openness","Conscientiousness","Extraversion","Agreeableness","Neuroticism",
-#                                                                "Risk tolerance", "Delay discounting",
-#                                                                "Risk Behaviour Composite","Speeding propensity", "Ever smoker", "Age at smoking initiation", "Cigarettes per day", 
-#                                                                "Alcohol use", "Drinks per week", "Alcohol dependence", "Cannabis use",
-#                                                                "Age at menarche","Age at first sex", "Number of sexual partners", "Age at first birth – Women", "Age at first birth – Men",
-#                                                                "Number children ever born – Women", "Number children ever born – Men", "Age at menopause",
-#                                                                "Schizophrenia","Bipolar Disorder","Obsessive Compulsive Disorder","Anorexia Nervosa","Attention Deficit Hyperactivity Disorder","Major Depressive Disorder",
-#                                                                "Autism Spectrum Disorder"),labels = paste0(rgs_fig4$trait.name_f, "\n", rgs_fig4$article))
 
 ### Fig 4 ###
 
-pdf("rG_fig4_NG_130220.pdf",width=9,height=12) #14
-ggplot(rgs_fig4, aes(y=noncogT_uncons, x=reorder(trait.name_f, desc(trait.name_f)))) + 
-  scale_colour_manual( name="Data", values=c("0" = "#ff9933","1" = "#1E90FF","2" = "#C0C0C0", "3"="red"), labels = c("NonCog", "Cog", "EA", "FDR-corrected \nsignificant difference \nbetween NonCog and Cog")) + #need trick with both values and labels and number to order the legend.....
+nudge <- position_nudge(x = 0, y = 0)
+nudge1 <- position_nudge(x = .2, y = 0)
+nudge2 <- position_nudge(x = -.2, y = 0)
+
+fig4 <- ggplot(rgs_fig4, aes(y=noncogT_uncons, x=reorder(trait.name_f, desc(trait.name_f)))) + 
+  scale_colour_manual( name="Data", values=c("0" = "#ff9933","1" = "#1E90FF","2" = "#C0C0C0", "3"="red"), labels = c(italic("NonCog"),italic("Cog"),"EA", "FDR-corrected \nsignificant difference \nbetween NonCog and Cog")) + #need trick with both values and labels and number to order the legend..... 
   scale_shape_manual( name="Data", values=c("0" =16,"1" =16,"2" =18, "3"=8), labels = c("NonCog", "Cog", "EA", "FDR-corrected \nsignificant difference \nbetween NonCog and Cog")) +
-  geom_point(aes(y=EAT_est, x=reorder(trait.name_f, desc(trait.name_f)),color="2", shape="2"), size=3) +
-  geom_errorbar(aes(ymin=EAT_est-1.96*EAT_SE, ymax=EAT_est+1.96*EAT_SE,color="2"), width=.3, show.legend=FALSE) +
-  geom_point(aes(y=cogT_uncons, x=reorder(trait.name_f, desc(trait.name_f)),color="1", shape="1"), size=3) +
-  geom_errorbar(aes(ymin=cogT_uncons-1.96*cogT_SE_uncons, ymax=cogT_uncons+1.96*cogT_SE_uncons,color="1"), width=.3, show.legend=FALSE) +
-  geom_point(aes(y=noncogT_uncons, x=reorder(trait.name_f, desc(trait.name_f)),color="0", shape="0"), size=3) + 
-  geom_errorbar(aes(ymin=noncogT_uncons-1.96*noncogT_SE_uncons, ymax=noncogT_uncons+1.96*noncogT_SE_uncons,color="0", shape="0"), width=.3, show.legend=FALSE) +
+  geom_point(aes(y=EAT_est, x=reorder(trait.name_f, desc(trait.name_f)),color="2", shape="2"), size=3, position = nudge)+
+  geom_errorbar(aes(ymin=EAT_est-1.96*EAT_SE, ymax=EAT_est+1.96*EAT_SE,color="2"), width=.3, show.legend=FALSE, position = nudge) +
+  geom_point(aes(y=cogT_uncons, x=reorder(trait.name_f, desc(trait.name_f)),color="1", shape="1"), size=3, position = nudge2) +
+  geom_errorbar(aes(ymin=cogT_uncons-1.96*cogT_SE_uncons, ymax=cogT_uncons+1.96*cogT_SE_uncons,color="1"), width=.3, show.legend=FALSE, position = nudge2) +
+  geom_point(aes(y=noncogT_uncons, x=reorder(trait.name_f, desc(trait.name_f)),color="0", shape="0"), size=3, position = nudge1) + 
+  geom_errorbar(aes(ymin=noncogT_uncons-1.96*noncogT_SE_uncons, ymax=noncogT_uncons+1.96*noncogT_SE_uncons,color="0", shape="0"), width=.3, show.legend=FALSE,
+                position = nudge1) +
   geom_point(data = rgs_fig4[rgs_fig4$T_pval_fdr < .05, ], # star to indicate the significance of the difference
              aes(y=-1, x=reorder(trait.name_f, desc(trait.name_f)), color="3",
                  shape = "3"),
@@ -94,27 +112,34 @@ ggplot(rgs_fig4, aes(y=noncogT_uncons, x=reorder(trait.name_f, desc(trait.name_f
   theme_light(base_size=12) +
   theme(axis.title.y=element_blank(),
         #axis.title.x=element_blank(),
-        legend.title=element_blank()) +
+        legend.title=element_blank(),
+        panel.grid=element_blank(),
+        plot.background=element_blank()) +
   ylab("Genetic Correlation") +
   theme(legend.position="right") +
-  facet_grid(category_f ~ ., scales = "free", space = "free_y") +
-  coord_flip() # flip y and x 
-dev.off()
+  #facet_grid(category_f ~ ., scales = "free", space = "free_y") +
+  coord_flip()
 
+fig4a = fig4+facet_grid(category_f ~ ., scales = "free", space = "free")+
+  theme(strip.text = element_text(size=10, colour = 'black', face = "bold"),
+        strip.background = element_rect(colour="gray", fill="white"))
 
-### Supplementary Fig 2 ###
+plot(fig4a)
+#ggsave(fig4a, file="Figure4_final.tiff", width=10, height=13)
+#ggsave(fig4a, file="Figure4_R1.pdf", width=11, height=13)
+
+### Supplementary Fig 11 ###
 sup <- rgs[which(rgs$category == "Supplementary"), ] 
-sup
-pdf("rG_figsup_130220.pdf",width=9,height=7)
-ggplot(sup, aes(y=noncogT_uncons, x=reorder(trait.name, 1-T_pval_fdr))) + 
+
+figs2<- ggplot(sup, aes(y=noncogT_uncons, x=reorder(trait.name, 1-T_pval_fdr))) + 
   scale_colour_manual( name="Data", values=c("0" = "#ff9933","1" = "#1E90FF","2" = "#C0C0C0", "3"="red"), labels = c("NonCog", "Cog", "EA", "FDR-corrected \nsignificant difference \nbetween NonCog and Cog")) + #need trick with both values and labels and number to order the legend.....
   scale_shape_manual( name="Data", values=c("0" =16,"1" =16,"2" =18, "3"=8), labels = c("NonCog", "Cog", "EA", "FDR-corrected \nsignificant difference \nbetween NonCog and Cog")) +
-  geom_point(aes(y=EAT_est, x=reorder(trait.name, 1-T_pval_fdr),color="2", shape="2"), size=3) +
-  geom_errorbar(aes(ymin=EAT_est-1.96*EAT_SE, ymax=EAT_est+1.96*EAT_SE,color="2"), width=.3, show.legend=FALSE) +
-  geom_point(aes(y=cogT_uncons, x=reorder(trait.name, 1-T_pval_fdr),color="1", shape="1"), size=2) +
-  geom_errorbar(aes(ymin=cogT_uncons-1.96*cogT_SE_uncons, ymax=cogT_uncons+1.96*cogT_SE_uncons,color="1"), width=.3, show.legend=FALSE) +
-  geom_point(aes(y=noncogT_uncons, x=reorder(trait.name, 1-T_pval_fdr),color="0", shape="0"), size=2) + 
-  geom_errorbar(aes(ymin=noncogT_uncons-1.96*noncogT_SE_uncons, ymax=noncogT_uncons+1.96*noncogT_SE_uncons,color="0", shape="0"), width=.3, show.legend=FALSE) +
+  geom_point(aes(y=EAT_est, x=reorder(trait.name, 1-T_pval_fdr),color="2", shape="2"), size=4, position = nudge) +
+  geom_errorbar(aes(ymin=EAT_est-1.96*EAT_SE, ymax=EAT_est+1.96*EAT_SE,color="2"), width=.2, show.legend=FALSE, position = nudge) +
+  geom_point(aes(y=cogT_uncons, x=reorder(trait.name, 1-T_pval_fdr),color="1", shape="1"), size=4, position = nudge2) +
+  geom_errorbar(aes(ymin=cogT_uncons-1.96*cogT_SE_uncons, ymax=cogT_uncons+1.96*cogT_SE_uncons,color="1"), width=.2, show.legend=FALSE, position = nudge2) +
+  geom_point(aes(y=noncogT_uncons, x=reorder(trait.name, 1-T_pval_fdr),color="0", shape="0"), size=4, position = nudge1) + 
+  geom_errorbar(aes(ymin=noncogT_uncons-1.96*noncogT_SE_uncons, ymax=noncogT_uncons+1.96*noncogT_SE_uncons,color="0", shape="0"), width=.2, show.legend=FALSE, position = nudge1) +
   geom_point(data = sup[sup$T_pval_fdr < .05, ], # star to indicate thesignificance of the difference
              aes(y=-1, x=reorder(trait.name, 1-T_pval_fdr), color="3",
                  shape = "3"),
@@ -129,9 +154,10 @@ ggplot(sup, aes(y=noncogT_uncons, x=reorder(trait.name, 1-T_pval_fdr))) +
   theme(legend.position="right") +
   #facet_grid(category_f ~ ., scales = "free", space = "free_y") +
   coord_flip() # flip y and x 
-dev.off()
 
-
+print(figs2)
+#ggsave(figs2, file="FigureS2_R1.png", width=9, height=8)
+#ggsave(figs2, file="FigureS2_R1.pdf", width=9, height=8)
 
 ### Fig 3 ###
 
