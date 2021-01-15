@@ -18,6 +18,10 @@ Code used to create the GWAS-by-subtraction of non-cognitive abilities, and for 
 
 Code was written with GenomicSEM_0.0.2. 
 
-You can find the associated preprint [here](https://www.biorxiv.org/content/10.1101/2020.01.14.905794v1.abstract).
+[Reference](https://www.nature.com/articles/s41588-020-00754-2): Demange, P.A., Malanchini, M., Mallard, T.T. et al. Investigating the genetic architecture of noncognitive skills using GWAS-by-subtraction. Nat Genet 53, 35-44 (2021). https://doi.org/10.1038/s41588-020-00754-2
 
-You can download the summary statistics of [NonCog](ftp://ftp.ebi.ac.uk/pub/databases/gwas/summary_statistics/GCST90011874) and [Cog](ftp://ftp.ebi.ac.uk/pub/databases/gwas/summary_statistics/GCST90011875), excluding 23andMe data, on the GWAS catalog website. 
+You can still find the associated preprint [here](https://www.biorxiv.org/content/10.1101/2020.01.14.905794v1.abstract).
+
+You can download the summary statistics of NonCog and Cog, excluding 23andMe data, on the GWAS catalog website: 
+NonCog: ftp://ftp.ebi.ac.uk/pub/databases/gwas/summary_statistics/GCST9001187   
+Cog: ftp://ftp.ebi.ac.uk/pub/databases/gwas/summary_statistics/GCST90011875
